@@ -11,3 +11,5 @@ Dependencies:
      
      Notify2:
      sudo pip install  notify2
+     
+     GTK+3
