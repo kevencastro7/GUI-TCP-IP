@@ -1,6 +1,6 @@
 # GUI-TCP/IP-CLIENT
 
-A TCP Client with a graphical user interfaces.
+A TCP Client with a graphical user interface.
 
 
 Dependencies:
