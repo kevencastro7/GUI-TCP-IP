@@ -78,23 +78,28 @@ class GraphicalUserInterface(MicroServiceBase):
 	    msg = self.app_objects['msg'].get_text() 
 	    try:
 		self.tcp.send (msg)
+		self.gui_set_status('Última Mensagem: ' + msg )
 		self.gui_clear_msg()
 	    except:
-		print 'Erro ao enviar a mensagem'
+		self.gui_set_status('Erro ao enviar a mensagem')
 	else:
-	    print 'Não conectado'
+		self.gui_set_status('Nao Conectado')
 	
     """#############################################################################################################"""
     """########################################### GUI UPDATE FUNCTIONS ############################################"""
     """#############################################################################################################"""
 
     @gtk_thread_safe
-    def gui_set_status(self, text):
-        self.app_objects['status'].set_label(text)
+    def gui_set_bt_status(self, text):
+        self.app_objects['bt_status'].set_label(text)
 
     @gtk_thread_safe
     def gui_clear_msg(self):
         self.app_objects['msg'].set_text('')
+
+    @gtk_thread_safe
+    def gui_set_status(self, text):
+        self.app_objects['status'].set_text(text)
 
 
     """#############################################################################################################"""
@@ -115,18 +120,18 @@ class GraphicalUserInterface(MicroServiceBase):
 		try:
 			self.tcp.connect(dest)
 			self.conectado = True
-			self.gui_set_status('Desconectar')
-			print 'Conectado com Sucesso'
+			self.gui_set_bt_status('Desconectar')
+			self.gui_set_status('Conectado com Sucesso')
 		except:
-			print 'Não foi possível conectar'
+			self.gui_set_status('Não foi possível conectar')
 		self.connect = False
 	    elif self.disconnect:
 		try:
 			self.tcp.close()
 			self.conectado = False
-			self.gui_set_status('Conectar')
-			print 'Desconectado com Sucesso'
+			self.gui_set_bt_status('Conectar')
+			self.gui_set_status('Desconectado com Sucesso')
 		except:
-			print 'Não foi possível desconectar'
+			self.gui_set_status('Não foi possível desconectar')
 	    	self.disconnect = False
 GraphicalUserInterface().execute(enable_tasks=True)
