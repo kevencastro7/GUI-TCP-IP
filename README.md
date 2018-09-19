@@ -9,3 +9,5 @@ Dependencies:
      https://github.com/jomorais/pyfase -> Author: JMorais
      sudo pip install pyfase
      
+     Notify2:
+     sudo pip install  notify2
