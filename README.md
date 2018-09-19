@@ -6,5 +6,6 @@ A TCP Client with a graphical user interfaces.
 Dependencies:
 
      Pyfase:  
-     
+     https://github.com/jomorais/pyfase -> Author: JMorais
      sudo pip install pyfase
+     
